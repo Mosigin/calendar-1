@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset ="utf-8">
+    <title>Calendar</title>
+    <script src = "calendar.js"></script>
+    <style>
+    table,th,td
+    {
+        border:1px solid black;
+        border-collapse:collapse;
+        padding:15px;
+    }
+    </style>
+    
+</head>
+
+<body  onload="getCalendar(1)">
+    <select id="yearSelect" onchange="getCalendar(0)">
+	
+        <option value="2010">2010</option>
+		<option value="2011">2011</option>
+		<option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+		<option value="2015">2015</option>
+    </select>
+    <select id="monthSelect" onchange="getCalendar(0)">
+        <option value="jan">一月</option>
+        <option value="feb">二月</option>
+        <option value="mar">三月</option>
+        <option value="apr">四月</option>
+        <option value="may">五月</option>
+        <option value="jun">六月</option>
+        <option value="jul">七月</option>
+        <option value="aug">八月</option>
+        <option value="sep">九月</option>
+        <option value="oct">十月</option>
+        <option value="nov">十一月</option>
+        <option value="dec">十二月</option>
+    </select>
+    <button type="button" id ="getCalendar" onclick="getCalendar(0)">刷新</button>
+    <button type="button" id ="showToday" onclick="getCalendar(1)">返回今天</button>
+    
+    <table id = "fillMonth">
+    </table>
+
+        
+
+</body>
+</html>
