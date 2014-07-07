@@ -1,5 +1,3 @@
-
-
 function getCalendar(current){
     // get selected year and month
     var ms = document.getElementById("monthSelect");
@@ -55,12 +53,8 @@ function getCalendar(current){
     }
     html+="</tr>";    
     
-    document.getElementById("fillMonth").innerHTML = html;    
-   
+    document.getElementById("fillMonth").innerHTML = html;       
 }
-    
-
-
 
 //get lunar date from a solar date
 var LunarDate = {  
@@ -150,7 +144,6 @@ var LunarDate = {
                 }
         };
 
-
 function lunarInfo(sYear,sMonth,sDay) //sMonth = 1,2,3,...
 {
     // lunar festivals
@@ -176,7 +169,6 @@ function lunarInfo(sYear,sMonth,sDay) //sMonth = 1,2,3,...
     if (offDate.getUTCDate()==sDay) return solarTerm[sMonth*2-2]; 
     return LunarDate.GetLunarDay(sYear,sMonth,sDay);
 }
-
 
 // set solar and lunar festivals
 var sFtv = new Array("0101 元旦","0214 情人节","0308 妇女节","0401 愚人节","0501 劳动节","0504 青年节","0601 儿童节","0701 建党节","0801 建军节","0910 教师节","1001 国庆节","1225 圣诞节");
