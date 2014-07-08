@@ -1,13 +1,37 @@
-function getCalendar(current){
+function getCalendar(type){
   // get selected year and month
   var ms = document.getElementById("monthSelect");
   var month = ms.selectedIndex;
   var ys = document.getElementById("yearSelect");
   var year = ys.selectedIndex+2010;
   var today = new Date();
-  if (current){
+  switch(type){
+  case 1:
     month = today.getMonth();
     year = today.getFullYear();
+    ys.selectedIndex = year-2010;
+    ms.selectedIndex = month;
+    break;
+  case 2:
+    if(ys.selectedIndex==0)break;
+    year = year-1;
+    ys.selectedIndex = year-2010;
+    break;
+  case 3:
+    if(ys.selectedIndex==5)break; //needs to count total number of years...
+    year = year+1;
+    ys.selectedIndex = year-2010;
+    break;
+  case 4:
+    if(ms.selectedIndex==0)break;
+    month = month-1;
+    ms.selectedIndex = month;
+    break;
+  case 5:
+    if(ms.selectedIndex==11)break;
+    month = month+1;
+    ms.selectedIndex = month;
+    break;
   }
   var thisMonth = (month==today.getMonth())&&(year==today.getFullYear());
     
@@ -21,24 +45,46 @@ function getCalendar(current){
   var indColumn=0;
   var i=0; var d=1;
   var html = "";
-  html += "<tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>";
+  html += "<tr><th class='weekend dayId chinese'>星期日</th><th class='weekday dayId chinese'>星期一</th><th class='weekday dayId chinese'>星期二</th><th class='weekday dayId chinese'>星期三</th><th class='weekday dayId chinese'>星期四</th><th class='weekday dayId chinese'>星期五</th><th class='weekend dayId chinese'>星期六</th></tr>";
   html += "<tr>";
   for (;i<firstDay;i++){
     html+="<td></td>";
     indColumn++;
   }
-  for(;d<=numDays;d++){
+  /*for(;d<=numDays;d++){
     if(thisMonth&&(d == today.getDate())){
-      html+='<td style = "background-color:yellow">';
+      html+='<td style = "background-color:#7fa7cb"><div>';
       html+=d;
     }
     else{
-      html+="<td>";
+      html+="<td><div>";
       html+=d;
     }
-    html+="<br/>";
+    html+="</div><div class='chinese'>";
     html+=lunarInfo(year,month+1,d);
-    html+="</td>";
+    html+="</div></td>";
+    indColumn++;
+    if(indColumn==7){
+      indColumn=0;
+      html+="</tr><tr>";
+    }
+  }*/
+  for(;d<=numDays;d++){
+    html+='<td class="';
+    if(thisMonth&&(d == today.getDate())){
+      html+='today ';
+    }
+    else if(indColumn==0||indColumn==6){
+      html+='weekend ';
+    }
+    else{
+      html+='weekday ';
+    }
+    html+='"><div class="number">';
+    html+=d;
+    html+='</div><div class="chinese">';
+    html+=lunarInfo(year,month+1,d);
+    html+="</div></td>";
     indColumn++;
     if(indColumn==7){
       indColumn=0;
@@ -106,7 +152,7 @@ var LunarDate = {
     var tmp = "";
     if(this.Day==1){
       if (this.Month < 1) {
-        tmp += "(闰)";
+        tmp += "闰";
         tmp += this.MonString.charAt(-this.Month - 1);
       }
       else {
@@ -143,6 +189,19 @@ var LunarDate = {
     return this.Month;
   }
 };
+
+function getNowMonth()
+{
+  var htmlSideBox = "";
+  var today = new Date();
+  htmlSideBox += today.getFullYear();
+  htmlSideBox += "-";
+  if(today.getMonth()<10){
+    htmlSideBox +="0";
+  }
+  htmlSideBox+=today.getMonth()+1;
+  document.getElementById("sideBox-1").innerHTML = htmlSideBox;
+}
 
 function lunarInfo(sYear,sMonth,sDay) //sMonth = 1,2,3,...
 {

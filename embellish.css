@@ -1,0 +1,195 @@
+table,th,td
+{
+  border:0px solid black;
+  border-collapse:collapse;
+  text-align: center;
+}
+
+#yearSelect{
+  position: absolute;
+  height: 20px;
+  width: 66px;
+  color: #f4f9fc;
+  background-color: #6a92b8;
+  margin-left: 50px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+#monthSelect{
+  position: absolute;
+  height: 20px;
+  width: 66px;
+  color: #f4f9fc;
+  background-color: #6a92b8;
+  margin-left: 190px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+
+div#calendarEntity{
+  position: relative;
+  width: 488px;
+  height: 323px; 
+  background-color: #eeeeee;
+  margin: 0 auto;
+  /*text-align: center;*/
+}
+
+#settings{
+/*
+  width: 600px;
+  margin: 0 auto; 
+  position: absolute;
+  text-align: center;
+  display: inline;*/
+  position: absolute;
+  margin-left:5px;
+  margin-top:3px;
+  height: 30px;
+  width: 480px;
+  background-image: url("setting.png");
+  background-repeat: repeat-x;
+}
+#nian{
+  position: absolute;
+  margin-left:120px;
+  margin-top: 8px;
+  color:#7fa7cb;
+}
+#yue{
+  position: absolute;
+  margin-left:260px;
+  margin-top: 8px;
+  color:#7fa7cb;
+}
+#yearDown{
+  position: absolute;
+  background-image: url(arrow2.png);
+  background-repeat: no-repeat;
+  margin-left:25px;
+  margin-top: 11px;
+  width: 10px;
+  height: 15px;
+}
+#yearUp{
+  position: absolute;
+  background-image: url(arrow1.png);
+  background-repeat: no-repeat;
+  margin-left:140px;
+  margin-top: 11px;
+  width: 10px;
+  height: 15px; 
+}
+#monthDown{
+  position: absolute;
+  background-image: url(arrow2.png);
+  background-repeat: no-repeat;
+  margin-left:165px;
+  margin-top: 11px;
+  width: 10px;
+  height: 15px; 
+}
+#monthUp{
+  position: absolute;
+  background-image: url(arrow1.png);
+  background-repeat: no-repeat;
+  margin-left:280px;
+  margin-top: 11px;
+  width: 10px;
+  height: 15px; 
+}
+
+
+#showToday{
+  position: absolute;
+  margin-left:350px;
+  margin-top:5px;
+  width: 100px;
+  height: 20px;
+  font-size:12px;
+}
+
+
+
+
+#monthTable{
+  /*display: inline;*/
+  position: absolute;
+  margin-left: 5px;
+  margin-top: 39px;
+  width: 460px;
+  height:255px;
+}
+div#sideBox{
+  position: absolute;
+  /*display: inline-block;*/
+  margin-left: 355px;
+  margin-top: 39px;
+  width:114px;
+  height:255px;
+  background-color: #6a92b8;
+}
+
+
+th.weekend{
+  color: #192a3a;
+}
+th.weekday{
+  color: #f4f9fc;
+}
+th.dayId{
+ background-color: #7fa7cb;
+}
+th{
+  width:48px;
+  height:30px;
+}
+.chinese{
+  font-size: 12px;
+}
+.number{
+  font-size: 17px;
+}
+td.weekend{
+  color:#d11e44;
+}
+td.weekday{
+  color:#858fa2;
+}
+td.today{
+  background-color:#7fa7cb;
+  color: #f4f9fc;
+}
+td{
+  margin:10px;
+  height: 44px;
+  background-color:#f4f9fc;
+}
+
+#sideBox-1{
+  border:2px solid #b8cbdc;
+  margin: 5px;
+  font-size: 11px;
+  color: #f4f9fc;
+  background-color: #7fa7cb;
+  text-align: center;
+  
+  
+}
+
+#sideBox-2{
+  border:2px solid #b8cbdc;
+  margin: 5px;
+  padding: 14px;
+  color: #192a3a;
+  background-color: #7fa7cb;
+  
+}
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
