@@ -1,36 +1,73 @@
+function getYearSelection(start,numYears){
+  var htmlYS = "";
+  for (var i=0;i<numYears;i++){
+    htmlYS += "<option value='";
+    htmlYS += start+i;
+    htmlYS += "'>";
+    htmlYS += start+i;
+    htmlYS += "</option>";
+  }
+  document.getElementById("yearSelect").innerHTML = htmlYS;
+}
+
 function getCalendar(type){
   // get selected year and month
   var ms = document.getElementById("monthSelect");
   var month = ms.selectedIndex;
   var ys = document.getElementById("yearSelect");
-  var year = ys.selectedIndex+2010;
+  var startYear = parseInt(ys.options[0].value);
+  var year = ys.selectedIndex+startYear;
   var today = new Date();
   switch(type){
-  case 1:
+  case 1: // get today's calendar
     month = today.getMonth();
     year = today.getFullYear();
-    ys.selectedIndex = year-2010;
+    ys.selectedIndex = year-startYear;
     ms.selectedIndex = month;
     break;
-  case 2:
+  case 2:  // previous year
     if(ys.selectedIndex==0)break;
     year = year-1;
-    ys.selectedIndex = year-2010;
+    ys.selectedIndex = year-startYear;
     break;
-  case 3:
-    if(ys.selectedIndex==5)break; //needs to count total number of years...
+  case 3:  //next year
+    if(ys.selectedIndex==document.all("yearSelect").options.length-1)break;
     year = year+1;
-    ys.selectedIndex = year-2010;
+    ys.selectedIndex = year-startYear;
     break;
-  case 4:
-    if(ms.selectedIndex==0)break;
-    month = month-1;
-    ms.selectedIndex = month;
+  case 4: //previous month
+    if(ms.selectedIndex==0){
+      if(ys.selectedIndex==0){
+        break;
+      }
+      else{
+        month=11;
+	ms.selectedIndex = month;
+	year = year -1;
+	ys.selectedIndex = year-startYear;
+      }
+    }
+    else{
+      month = month-1;
+      ms.selectedIndex = month;
+    }
     break;
-  case 5:
-    if(ms.selectedIndex==11)break;
-    month = month+1;
-    ms.selectedIndex = month;
+  case 5: //next month
+    if(ms.selectedIndex==11){
+      if(ys.selectedIndex==document.all("yearSelect").options.length-1){
+       break;
+      }
+      else{
+        month = 0;
+	ms.selectedIndex = month;
+	year = year+1;
+	ys.selectedIndex = year-startYear;
+      }
+    }
+    else{
+      month = month+1;
+      ms.selectedIndex = month;
+    }
     break;
   }
   var thisMonth = (month==today.getMonth())&&(year==today.getFullYear());
@@ -201,6 +238,8 @@ function getNowMonth()
   }
   htmlSideBox+=today.getMonth()+1;
   document.getElementById("sideBox-1").innerHTML = htmlSideBox;
+  
+  //alert(document.all("yearSelect").options.length);
 }
 
 function lunarInfo(sYear,sMonth,sDay) //sMonth = 1,2,3,...

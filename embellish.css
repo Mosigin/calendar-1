@@ -16,6 +16,7 @@ table,th,td
   margin-left: 50px;
   margin-top: 5px;
   text-align: center;
+  text-shadow: 0px -1px 1px #111111;
 }
 
 #monthSelect{
@@ -27,6 +28,7 @@ table,th,td
   margin-left: 190px;
   margin-top: 5px;
   text-align: center;
+  text-shadow: 0px -1px 1px #111111;
 }
 
 
@@ -139,9 +141,9 @@ div#calendarEntity{
 
 #fillMonth{
   position: absolute;
-  margin-left: 5px;
+  margin-left: 3px;
   margin-top: 35px;
-  width: 357px;
+  width: 359px;
   height: 270px;
   border:1px solid #858fa2;
   border-radius: 8px;
@@ -150,13 +152,15 @@ div#calendarEntity{
 tr.nameRow{
   border-bottom:2px solid #6a92b8;
   border-top:none;
+  /*border-left:;
+  border-right:;
+  /*border-radius: 8px;*/
 }
 tr.monthRow{
   border:1px solid #858fa2;
 }
 div#sideBox{
   position: absolute;
-  /*display: inline-block;*/
   margin-left: 366px;
   margin-top: 35px;
   width:114px;
@@ -168,6 +172,7 @@ div#sideBox{
 
 th.weekend{
   color: #192a3a;
+  /*border-radius: 5px 5px 0px 0px;*/
 }
 th.weekday{
   color: #f4f9fc;
@@ -176,7 +181,6 @@ th.dayId{
  background-color: #7fa7cb;
 }
 th{
-  /*width:48px;*/
   height:30px;
 }
 .chinese{
@@ -194,15 +198,15 @@ td.weekday{
   color:#858fa2;
 }
 td.today{
+  border-bottom: 1px solid #192a3a;
   background-color:#7fa7cb;
   color: #f4f9fc;
+  text-shadow: 0px 0px 1px #192a3a;
 }
 td{
-  /*width:28px;
-  height:40px;
-  margin-left:10px;*/
   background-color:#f4f9fc;
   border-collapse:collapse;
+  font-weight: 600;
 }
 td.weekday:hover,td.weekend:hover,td.today:hover
 {
@@ -220,23 +224,22 @@ td.weekday:hover,td.weekend:hover,td.today:hover
   font-family: Arial;
   color: #f4f9fc;
   background-color: #7fa7cb;
-  text-align: center;
-  
-  
+  text-align: center;  
 }
 
 #sideBox-2{
   border:2px solid #b8cbdc;
   border-radius: 8px;
   margin: 5px;
+  height: 120px;
   padding: 14px;
+  line-height: 20px;
   color: #192a3a;
-  background-color: #7fa7cb;
-  
+  background-color: #7fa7cb;  
 }
 
-* {
+*{
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }

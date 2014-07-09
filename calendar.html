@@ -8,20 +8,13 @@
     <link rel="stylesheet" type="text/css" href="embellish.css">    
 </head>
 
-<body  onload="getCalendar(1),getNowMonth()">
+<body  onload="getYearSelection(2010,10),getCalendar(1),getNowMonth()">
   <div id="calendarEntity" class="container">
     <div id="settings">
       <div id="setting-background-1"></div>
       <div id="setting-background-2"></div>
       <a id="yearDown" onclick="getCalendar(2)"> </a>
-      <select id="yearSelect" onchange="getCalendar(0)">	  
-	  <option value="2010">2010</option>
-	  <option value="2011">2011</option>
-	  <option value="2012">2012</option>
-	  <option value="2013">2013</option>
-	  <option value="2014">2014</option>
-	  <option value="2015">2015</option>
-      </select>
+      <select id="yearSelect" onchange="getCalendar(0)"></select>
       <span id="nian" class="chinese">年</span>
       <a id="yearUp" onclick="getCalendar(3)"> </a>
       <a id="monthDown" onclick="getCalendar(4)"> </a>
@@ -51,7 +44,7 @@
     <div id="sideBox">
       <div id="sideBox-1">
       </div>
-      <div id="sideBox-2" class="chinese">订阅火狐快讯<br/>轻松掌握火狐动态！
+      <div id="sideBox-2" class="chinese">订阅火狐快讯轻松掌握火狐动态！
       </div>
     </div>
   </div>
