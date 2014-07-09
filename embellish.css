@@ -1,7 +1,6 @@
 table,th,td
 {
   /*border:0px solid black;*/
-  /*border-collapse:collapse;*/
   text-align: center;
 }
 
@@ -11,12 +10,13 @@ table,th,td
   width: 66px;
   color: #f4f9fc;
   background-color: #6a92b8;
-  /*background-image:url("select2.png");*/
+  background-image:url("images/select2.png");
   background-repeat:repeat-x;
   margin-left: 50px;
   margin-top: 5px;
   text-align: center;
   text-shadow: 0px -1px 1px #111111;
+  font-weight: 600;
 }
 
 #monthSelect{
@@ -25,10 +25,13 @@ table,th,td
   width: 66px;
   color: #f4f9fc;
   background-color: #6a92b8;
-  margin-left: 190px;
+  background-image:url("images/select2.png");
+  background-repeat:repeat-x; 
+  margin-left: 210px;
   margin-top: 5px;
   text-align: center;
   text-shadow: 0px -1px 1px #111111;
+  font-weight: 600;
 }
 
 
@@ -68,7 +71,7 @@ div#calendarEntity{
 }
 #yue{
   position: absolute;
-  margin-left:260px;
+  margin-left:280px;
   margin-top: 8px;
   color:#7fa7cb;
 }
@@ -112,7 +115,7 @@ div#calendarEntity{
   position: absolute;
   background-image: url("images/arrow2.png");
   background-repeat: no-repeat;
-  margin-left:165px;
+  margin-left:185px;
   margin-top: 11px;
   width: 10px;
   height: 15px; 
@@ -121,7 +124,7 @@ div#calendarEntity{
   position: absolute;
   background-image: url("images/arrow1.png");
   background-repeat: no-repeat;
-  margin-left:280px;
+  margin-left:300px;
   margin-top: 11px;
   width: 10px;
   height: 15px; 
@@ -130,7 +133,7 @@ div#calendarEntity{
 
 #showToday{
   position: absolute;
-  margin-left:350px;
+  margin-left:370px;
   margin-top:5px;
   width: 100px;
   height: 20px;
@@ -146,8 +149,9 @@ div#calendarEntity{
   width: 359px;
   height: 270px;
   border:1px solid #858fa2;
-  border-radius: 8px;
-  border-collapse: collapse;
+  border-radius: 5px 5px 5px 5px;
+  border-collapse: separate;
+  border-spacing: 0px;
 }
 tr.nameRow{
   border-bottom:2px solid #6a92b8;
@@ -169,7 +173,12 @@ div#sideBox{
   border-radius: 5px;
 }
 
-
+th#Sun{
+  border-radius: 5px 0px 0px 0px;
+}
+th#Sat{
+  border-radius: 0px 5px 0px 0px;
+}
 th.weekend{
   color: #192a3a;
   /*border-radius: 5px 5px 0px 0px;*/
@@ -181,6 +190,8 @@ th.dayId{
  background-color: #7fa7cb;
 }
 th{
+  border-bottom:2px solid #6a92b8;
+  border-top:none;
   height:30px;
 }
 .chinese{
@@ -204,8 +215,8 @@ td.today{
   text-shadow: 0px 0px 1px #192a3a;
 }
 td{
+  border-top:1px solid #858fa2;
   background-color:#f4f9fc;
-  border-collapse:collapse;
   font-weight: 600;
 }
 td.weekday:hover,td.weekend:hover,td.today:hover

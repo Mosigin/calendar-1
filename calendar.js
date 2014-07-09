@@ -79,10 +79,10 @@ function getCalendar(type){
   var numDays = new Date(year,month+1,0).getDate();
     
   //draw table
-  var indColumn=0;
+  var indColumn=0,numRows=0;
   var i=0; var d=1;
   var html = "";
-  html += "<tr class='nameRow'><th class='weekend dayId chinese'>星期日</th><th class='weekday dayId chinese'>星期一</th><th class='weekday dayId chinese'>星期二</th><th class='weekday dayId chinese'>星期三</th><th class='weekday dayId chinese'>星期四</th><th class='weekday dayId chinese'>星期五</th><th class='weekend dayId chinese'>星期六</th></tr>";
+  html += "<tr class='nameRow'><th id='Sun' class='weekend dayId chinese'>星期日</th><th class='weekday dayId chinese'>星期一</th><th class='weekday dayId chinese'>星期二</th><th class='weekday dayId chinese'>星期三</th><th class='weekday dayId chinese'>星期四</th><th class='weekday dayId chinese'>星期五</th><th id='Sat' class='weekend dayId chinese'>星期六</th></tr>";
   html += "<tr class='monthRow'>";
   for (;i<firstDay;i++){
     html+="<td></td>";
@@ -124,6 +124,7 @@ function getCalendar(type){
     html+="</div></td>";
     indColumn++;
     if(indColumn==7){
+      numRows ++;
       indColumn=0;
       html+="</tr><tr class='monthRow'>";
     }
@@ -135,6 +136,8 @@ function getCalendar(type){
   html+="</tr>";
 
   document.getElementById("fillMonth").innerHTML = html;
+  document.getElementById("fillMonth").rows[numRows+1].cells[0].style.borderRadius = "0px 0px 0px 5px";
+  document.getElementById("fillMonth").rows[numRows+1].cells[6].style.borderRadius = "0px 0px 5px 0px";
 }
 
 //get lunar date from a solar date
@@ -206,7 +209,7 @@ var LunarDate = {
     return tmp;
   },
   GetLunarDay: function(solarYear, solarMonth, solarDay) {
-    if (solarYear < 1921 || solarYear > 2020) {
+    if (solarYear < 1921 || solarYear > 2020) { 
       return "";
     }
     else {
