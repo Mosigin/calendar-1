@@ -45,8 +45,8 @@ function getCalendar(type){
   var indColumn=0;
   var i=0; var d=1;
   var html = "";
-  html += "<tr><th class='weekend dayId chinese'>星期日</th><th class='weekday dayId chinese'>星期一</th><th class='weekday dayId chinese'>星期二</th><th class='weekday dayId chinese'>星期三</th><th class='weekday dayId chinese'>星期四</th><th class='weekday dayId chinese'>星期五</th><th class='weekend dayId chinese'>星期六</th></tr>";
-  html += "<tr>";
+  html += "<tr class='nameRow'><th class='weekend dayId chinese'>星期日</th><th class='weekday dayId chinese'>星期一</th><th class='weekday dayId chinese'>星期二</th><th class='weekday dayId chinese'>星期三</th><th class='weekday dayId chinese'>星期四</th><th class='weekday dayId chinese'>星期五</th><th class='weekend dayId chinese'>星期六</th></tr>";
+  html += "<tr class='monthRow'>";
   for (;i<firstDay;i++){
     html+="<td></td>";
     indColumn++;
@@ -88,7 +88,7 @@ function getCalendar(type){
     indColumn++;
     if(indColumn==7){
       indColumn=0;
-      html+="</tr><tr>";
+      html+="</tr><tr class='monthRow'>";
     }
   }
   while(indColumn > 0 && indColumn<7){

@@ -1,7 +1,7 @@
 table,th,td
 {
-  border:0px solid black;
-  border-collapse:collapse;
+  /*border:0px solid black;*/
+  /*border-collapse:collapse;*/
   text-align: center;
 }
 
@@ -11,6 +11,8 @@ table,th,td
   width: 66px;
   color: #f4f9fc;
   background-color: #6a92b8;
+  /*background-image:url("select2.png");*/
+  background-repeat:repeat-x;
   margin-left: 50px;
   margin-top: 5px;
   text-align: center;
@@ -31,9 +33,13 @@ table,th,td
 div#calendarEntity{
   position: relative;
   width: 488px;
-  height: 323px; 
+  height: 333px; 
   background-color: #eeeeee;
   margin: 0 auto;
+  border-top:1px solid #888888;
+  border-left:1px solid #888888;
+  border-right:1px solid #888888;
+  border-bottom:1px solid #888888;
   /*text-align: center;*/
 }
 
@@ -48,8 +54,8 @@ div#calendarEntity{
   margin-left:5px;
   margin-top:3px;
   height: 30px;
-  width: 480px;
-  background-image: url("setting.png");
+  width: 462px;
+  background-image: url("images/setting2.png");
   background-repeat: repeat-x;
 }
 #nian{
@@ -64,9 +70,27 @@ div#calendarEntity{
   margin-top: 8px;
   color:#7fa7cb;
 }
+#setting-background-1{
+  position: absolute;
+  margin-left:-2px;
+  margin-top: 0px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/setting1.png");
+  background-repeat: no-repeat;
+}
+#setting-background-2{
+  position: absolute;
+  margin-left:462px;
+  margin-top: 0px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/setting3.png");
+  background-repeat: no-repeat;
+}
 #yearDown{
   position: absolute;
-  background-image: url(arrow2.png);
+  background-image: url("images/arrow2.png");
   background-repeat: no-repeat;
   margin-left:25px;
   margin-top: 11px;
@@ -75,7 +99,7 @@ div#calendarEntity{
 }
 #yearUp{
   position: absolute;
-  background-image: url(arrow1.png);
+  background-image: url("images/arrow1.png");
   background-repeat: no-repeat;
   margin-left:140px;
   margin-top: 11px;
@@ -84,7 +108,7 @@ div#calendarEntity{
 }
 #monthDown{
   position: absolute;
-  background-image: url(arrow2.png);
+  background-image: url("images/arrow2.png");
   background-repeat: no-repeat;
   margin-left:165px;
   margin-top: 11px;
@@ -93,7 +117,7 @@ div#calendarEntity{
 }
 #monthUp{
   position: absolute;
-  background-image: url(arrow1.png);
+  background-image: url("images/arrow1.png");
   background-repeat: no-repeat;
   margin-left:280px;
   margin-top: 11px;
@@ -113,23 +137,32 @@ div#calendarEntity{
 
 
 
-
-#monthTable{
-  /*display: inline;*/
+#fillMonth{
   position: absolute;
   margin-left: 5px;
-  margin-top: 39px;
-  width: 460px;
-  height:255px;
+  margin-top: 35px;
+  width: 357px;
+  height: 270px;
+  border:1px solid #858fa2;
+  border-radius: 8px;
+  border-collapse: collapse;
+}
+tr.nameRow{
+  border-bottom:2px solid #6a92b8;
+  border-top:none;
+}
+tr.monthRow{
+  border:1px solid #858fa2;
 }
 div#sideBox{
   position: absolute;
   /*display: inline-block;*/
-  margin-left: 355px;
-  margin-top: 39px;
+  margin-left: 366px;
+  margin-top: 35px;
   width:114px;
-  height:255px;
+  height:270px;
   background-color: #6a92b8;
+  border-radius: 5px;
 }
 
 
@@ -143,14 +176,16 @@ th.dayId{
  background-color: #7fa7cb;
 }
 th{
-  width:48px;
+  /*width:48px;*/
   height:30px;
 }
 .chinese{
   font-size: 12px;
+  font-family: Arial;
 }
 .number{
   font-size: 17px;
+  font-family: Arial;
 }
 td.weekend{
   color:#d11e44;
@@ -163,15 +198,26 @@ td.today{
   color: #f4f9fc;
 }
 td{
-  margin:10px;
-  height: 44px;
+  /*width:28px;
+  height:40px;
+  margin-left:10px;*/
   background-color:#f4f9fc;
+  border-collapse:collapse;
+}
+td.weekday:hover,td.weekend:hover,td.today:hover
+{
+  background-color:#b8cbdc;
 }
 
 #sideBox-1{
   border:2px solid #b8cbdc;
+  /*-moz-border-radius: 11px;
+  -khtml-border-radius: 11px;
+  -webkit-border-radius: 11px;*/
+  border-radius: 8px;
   margin: 5px;
   font-size: 11px;
+  font-family: Arial;
   color: #f4f9fc;
   background-color: #7fa7cb;
   text-align: center;
@@ -181,6 +227,7 @@ td{
 
 #sideBox-2{
   border:2px solid #b8cbdc;
+  border-radius: 8px;
   margin: 5px;
   padding: 14px;
   color: #192a3a;

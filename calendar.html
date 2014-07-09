@@ -11,6 +11,8 @@
 <body  onload="getCalendar(1),getNowMonth()">
   <div id="calendarEntity" class="container">
     <div id="settings">
+      <div id="setting-background-1"></div>
+      <div id="setting-background-2"></div>
       <a id="yearDown" onclick="getCalendar(2)"> </a>
       <select id="yearSelect" onchange="getCalendar(0)">	  
 	  <option value="2010">2010</option>
@@ -43,13 +45,11 @@
       <button type="button" id ="showToday" onclick="getCalendar(1)">返回今天</button>
     </div>
     
-    <div id="monthTable">  
     <table id = "fillMonth">
     </table>
-    </div>
     
     <div id="sideBox">
-      <div id="sideBox-1" class="chinese">
+      <div id="sideBox-1">
       </div>
       <div id="sideBox-2" class="chinese">订阅火狐快讯<br/>轻松掌握火狐动态！
       </div>
