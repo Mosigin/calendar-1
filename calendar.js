@@ -79,33 +79,15 @@ function getCalendar(type){
   var numDays = new Date(year,month+1,0).getDate();
     
   //draw table
-  var indColumn=0,numRows=0;
+  var indColumn=0;
   var i=0; var d=1;
   var html = "";
-  html += "<tr class='nameRow'><th id='Sun' class='weekend dayId chinese'>星期日</th><th class='weekday dayId chinese'>星期一</th><th class='weekday dayId chinese'>星期二</th><th class='weekday dayId chinese'>星期三</th><th class='weekday dayId chinese'>星期四</th><th class='weekday dayId chinese'>星期五</th><th id='Sat' class='weekend dayId chinese'>星期六</th></tr>";
+  html += "<tr class='nameRow'><th id='Sun' class='weekend dayId chinese'>星期日</th><th class='workday dayId chinese'>星期一</th><th class='workday dayId chinese'>星期二</th><th class='workday dayId chinese'>星期三</th><th class='workday dayId chinese'>星期四</th><th class='workday dayId chinese'>星期五</th><th id='Sat' class='weekend dayId chinese'>星期六</th></tr>";
   html += "<tr class='monthRow'>";
   for (;i<firstDay;i++){
     html+="<td></td>";
     indColumn++;
   }
-  /*for(;d<=numDays;d++){
-    if(thisMonth&&(d == today.getDate())){
-      html+='<td style = "background-color:#7fa7cb"><div>';
-      html+=d;
-    }
-    else{
-      html+="<td><div>";
-      html+=d;
-    }
-    html+="</div><div class='chinese'>";
-    html+=lunarInfo(year,month+1,d);
-    html+="</div></td>";
-    indColumn++;
-    if(indColumn==7){
-      indColumn=0;
-      html+="</tr><tr>";
-    }
-  }*/
   for(;d<=numDays;d++){
     html+='<td class="';
     if(thisMonth&&(d == today.getDate())){
@@ -115,7 +97,7 @@ function getCalendar(type){
       html+='weekend ';
     }
     else{
-      html+='weekday ';
+      html+='workday ';
     }
     html+='"><div class="number">';
     html+=d;
@@ -123,8 +105,7 @@ function getCalendar(type){
     html+=lunarInfo(year,month+1,d);
     html+="</div></td>";
     indColumn++;
-    if(indColumn==7){
-      numRows ++;
+    if((indColumn==7)&&(d<numDays)){
       indColumn=0;
       html+="</tr><tr class='monthRow'>";
     }
@@ -136,8 +117,9 @@ function getCalendar(type){
   html+="</tr>";
 
   document.getElementById("fillMonth").innerHTML = html;
-  document.getElementById("fillMonth").rows[numRows+1].cells[0].style.borderRadius = "0px 0px 0px 5px";
-  document.getElementById("fillMonth").rows[numRows+1].cells[6].style.borderRadius = "0px 0px 5px 0px";
+  var numRows = document.getElementById("fillMonth").rows.length;
+  document.getElementById("fillMonth").rows[numRows-1].cells[0].className += "month-left-bottom";
+  document.getElementById("fillMonth").rows[numRows-1].cells[6].className += "month-right-bottom";
 }
 
 //get lunar date from a solar date
@@ -201,7 +183,7 @@ var LunarDate = {
       tmp += "月";
     }
     else{
-      tmp += (this.Day < 11) ? "初": ((this.Day < 20) ? "十": ((this.Day< 21) ?"二十":((this.Day < 30) ? "廿": "三十")));                        
+      tmp += (this.Day < 11) ? "初": ((this.Day < 20) ? "十": ((this.Day< 21) ?"二十":((this.Day < 30) ? "廿": "三十")));             
       if (this.Day % 10 != 0 || this.Day == 10) {
         tmp += this.NumString.charAt((this.Day - 1) % 10);
       }
@@ -209,7 +191,7 @@ var LunarDate = {
     return tmp;
   },
   GetLunarDay: function(solarYear, solarMonth, solarDay) {
-    if (solarYear < 1921 || solarYear > 2020) { 
+    if (solarYear < 1921 || solarYear > 2020) {
       return "";
     }
     else {
@@ -241,28 +223,40 @@ function getNowMonth()
   }
   htmlSideBox+=today.getMonth()+1;
   document.getElementById("sideBox-1").innerHTML = htmlSideBox;
-  
-  //alert(document.all("yearSelect").options.length);
 }
 
 function lunarInfo(sYear,sMonth,sDay) //sMonth = 1,2,3,...
 {
-  // lunar festivals
+  //lunar festivals
   var lDay = LunarDate.GetLDay(sYear,sMonth,sDay);
   var lMonth = LunarDate.GetLMonth(sYear,sMonth,sDay);
-  for(i in lFtv){
-    if((parseInt(lFtv[i].substr(0,2))==lMonth)&&(parseInt(lFtv[i].substr(2,4))==lDay)){
-      return lFtv[i].substr(5);
-    }
+  var lDateString = "";
+  if(lMonth<10){
+    lDateString += "0";
   }
-	
-  // solar festivals
-  for(i in sFtv){
-    if((parseInt(sFtv[i].substr(0,2))==sMonth)&&(parseInt(sFtv[i].substr(2,4))==sDay)){
-      return sFtv[i].substr(5);
-    }
+  lDateString += lMonth.toString();
+  if(lDay<10){
+    lDateString += "0";
   }
-	
+  lDateString += lDay.toString();
+  if(lDateString in lFtv){
+    return lFtv[lDateString];
+  }
+  
+  //solar festivals
+  var sDateString = "";
+  if(sMonth<10){
+    sDateString += "0";
+  }
+  sDateString += sMonth.toString();
+  if(sDay<10){
+    sDateString += "0";
+  }
+  sDateString += sDay.toString();
+  if(sDateString in sFtv){
+    return sFtv[sDateString];
+  }
+  
   // solar terms
   offDate = new Date((31556925974.7*(sYear-1900)+sTermInfo[sMonth*2-1]*60000)+Date.UTC(1900,0,6,2,5))
   if (offDate.getUTCDate()==sDay) return solarTerm[sMonth*2-1];
@@ -272,8 +266,32 @@ function lunarInfo(sYear,sMonth,sDay) //sMonth = 1,2,3,...
 }
 
 // set solar and lunar festivals
-var sFtv = new Array("0101 元旦","0214 情人节","0307 女生节","0308 妇女节","0401 愚人节","0501 劳动节","0504 青年节","0601 儿童节","0701 建党节","0801 建军节","0910 教师节","1001 国庆节","1112 男生节","1225 圣诞节");
-var lFtv = new Array("0101 春节","0115 元宵节","0505 端午节","0707 七夕节","0815 中秋节","0909 重阳节","1208 腊八节");
-var solarTerm = new Array("小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至");
+var sFtv = {
+  "0101":"元旦",
+  "0214":"情人节",
+  "0307":"女生节",
+  "0308":"妇女节",
+  "0401":"愚人节",
+  "0501":"劳动节",
+  "0504":"青年节",
+  "0601":"儿童节",
+  "0701":"建党节",
+  "0801":"建军节",
+  "0910":"教师节",
+  "1001":"国庆节",
+  "1112":"男生节",
+  "1225":"圣诞节",
+}
+var lFtv ={
+  "0101":"春节",
+  "0115":"元宵节",
+  "0505":"端午节",
+  "0707":"七夕节",
+  "0815":"中秋节",
+  "0909":"重阳节",
+  "1208":"腊八节",
+}
 
-var sTermInfo = new Array(0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758);
+//set solar terms
+var solarTerm = ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
+var sTermInfo = [0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];

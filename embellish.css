@@ -1,27 +1,27 @@
 table,th,td
 {
-  /*border:0px solid black;*/
   text-align: center;
 }
 
 #yearSelect{
   position: absolute;
-  height: 20px;
+  height: 21px;
   width: 66px;
   color: #f4f9fc;
   background-color: #6a92b8;
   background-image:url("images/select2.png");
   background-repeat:repeat-x;
-  margin-left: 50px;
+  margin-left: 60px;
   margin-top: 5px;
+  border: 0px;
   text-align: center;
   text-shadow: 0px -1px 1px #111111;
-  font-weight: 600;
+  font-weight: 600;  
 }
 
 #monthSelect{
   position: absolute;
-  height: 20px;
+  height: 21px;
   width: 66px;
   color: #f4f9fc;
   background-color: #6a92b8;
@@ -29,13 +29,13 @@ table,th,td
   background-repeat:repeat-x; 
   margin-left: 210px;
   margin-top: 5px;
+  border: 0px;
   text-align: center;
   text-shadow: 0px -1px 1px #111111;
   font-weight: 600;
 }
 
-
-div#calendarEntity{
+#calendarEntity{
   position: relative;
   width: 488px;
   height: 333px; 
@@ -45,17 +45,9 @@ div#calendarEntity{
   border-left:1px solid #888888;
   border-right:1px solid #888888;
   border-bottom:1px solid #888888;
-  /*text-align: center;*/
 }
 
 #settings{
-/*
-  width: 600px;
-  margin: 0 auto; 
-  position: absolute;
-  text-align: center;
-  display: inline;*/
-  position: absolute;
   margin-left:5px;
   margin-top:3px;
   height: 30px;
@@ -63,17 +55,91 @@ div#calendarEntity{
   background-image: url("images/setting2.png");
   background-repeat: repeat-x;
 }
+
+/*warning: click on arrows will not trigger select list*/
+#month-set-bcg1{
+  position: absolute;
+  margin-left:55px;
+  margin-top: 5px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/select1.png");
+  background-repeat: no-repeat;
+  z-index:0;
+}
+#month-set-bcg2{
+  position: absolute;
+  margin-left:113px;
+  margin-top: 5px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/select3.png");
+  background-repeat: no-repeat;
+  z-index:1;
+}
+#month-set-ar1{
+  position: absolute;
+  margin-left:110px;
+  margin-top: 14px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/selectarrow1.png");
+  background-repeat: no-repeat;
+  z-index:2;
+}
+#month-set-ar2{
+  position: absolute;
+  margin-left:110px;
+  margin-top: 6px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/selectarrow2.png");
+  background-repeat: no-repeat;
+  z-index:2;
+}
+
+#year-set-bcg1{
+  position: absolute;
+  margin-left:205px;
+  margin-top: 5px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/select1.png");
+  background-repeat: no-repeat;
+  z-index:0;
+}
+#year-set-bcg2{
+  position: absolute;
+  margin-left:263px;
+  margin-top: 5px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/select3.png");
+  background-repeat: no-repeat;
+  z-index:1;
+}
+#year-set-ar{
+  position: absolute;
+  margin-left:260px;
+  margin-top: 10px;
+  width: 30px;
+  height:30px;
+  background-image: url("images/selectarrow1.png");
+  background-repeat: no-repeat;
+  z-index:2;
+}
+
 #nian{
   position: absolute;
-  margin-left:120px;
+  margin-left:130px;
   margin-top: 8px;
-  color:#7fa7cb;
+  color:#6a92b8;
 }
 #yue{
   position: absolute;
   margin-left:280px;
   margin-top: 8px;
-  color:#7fa7cb;
+  color:#6a92b8;
 }
 #setting-background-1{
   position: absolute;
@@ -97,7 +163,7 @@ div#calendarEntity{
   position: absolute;
   background-image: url("images/arrow2.png");
   background-repeat: no-repeat;
-  margin-left:25px;
+  margin-left:35px;
   margin-top: 11px;
   width: 10px;
   height: 15px;
@@ -106,7 +172,7 @@ div#calendarEntity{
   position: absolute;
   background-image: url("images/arrow1.png");
   background-repeat: no-repeat;
-  margin-left:140px;
+  margin-left:150px;
   margin-top: 11px;
   width: 10px;
   height: 15px; 
@@ -130,22 +196,10 @@ div#calendarEntity{
   height: 15px; 
 }
 
-
-#showToday{
-  position: absolute;
-  margin-left:370px;
-  margin-top:5px;
-  width: 100px;
-  height: 20px;
-  font-size:12px;
-}
-
-
-
 #fillMonth{
-  position: absolute;
+  float: left;
   margin-left: 3px;
-  margin-top: 35px;
+  margin-top: 3px;
   width: 359px;
   height: 270px;
   border:1px solid #858fa2;
@@ -153,37 +207,23 @@ div#calendarEntity{
   border-collapse: separate;
   border-spacing: 0px;
 }
-tr.nameRow{
-  border-bottom:2px solid #6a92b8;
-  border-top:none;
-  /*border-left:;
-  border-right:;
-  /*border-radius: 8px;*/
-}
-tr.monthRow{
-  border:1px solid #858fa2;
-}
-div#sideBox{
-  position: absolute;
-  margin-left: 366px;
-  margin-top: 35px;
-  width:114px;
-  height:270px;
-  background-color: #6a92b8;
-  border-radius: 5px;
-}
 
-th#Sun{
+#Sun{
   border-radius: 5px 0px 0px 0px;
 }
-th#Sat{
+#Sat{
   border-radius: 0px 5px 0px 0px;
+}
+td.month-left-bottom{
+  border-radius: 0px 0px 0px 5px;
+}
+td.month-right-bottom{
+  border-radius: 0px 0px 5px 0px;
 }
 th.weekend{
   color: #192a3a;
-  /*border-radius: 5px 5px 0px 0px;*/
 }
-th.weekday{
+th.workday{
   color: #f4f9fc;
 }
 th.dayId{
@@ -196,16 +236,17 @@ th{
 }
 .chinese{
   font-size: 12px;
-  font-family: Arial;
+  font-family: "黑体";
 }
 .number{
   font-size: 17px;
-  font-family: Arial;
+  font-family: arial;
+  
 }
 td.weekend{
   color:#d11e44;
 }
-td.weekday{
+td.workday{
   color:#858fa2;
 }
 td.today{
@@ -219,25 +260,39 @@ td{
   background-color:#f4f9fc;
   font-weight: 600;
 }
-td.weekday:hover,td.weekend:hover,td.today:hover
+td.workday:hover,td.weekend:hover,td.today:hover
 {
   background-color:#b8cbdc;
 }
 
-#sideBox-1{
-  border:2px solid #b8cbdc;
+/*may use the following instead of border-radius
   /*-moz-border-radius: 11px;
   -khtml-border-radius: 11px;
   -webkit-border-radius: 11px;*/
-  border-radius: 8px;
-  margin: 5px;
+
+
+#sideBox{
+  position: relative;
+  margin-left: 366px;
+  margin-top: 3px;
+  width:114px;
+  height:270px;
+  background-color: #6a92b8;
+  border-radius: 5px;
+}
+#sideBox-1{
+  border:2px solid #b8cbdc;
+  border-radius: 7px;
+  position:relative;
+  top:3px;
+  margin: 0px auto;
+  width: 106px;
   font-size: 11px;
   font-family: Arial;
   color: #f4f9fc;
   background-color: #7fa7cb;
-  text-align: center;  
+  text-align: center;
 }
-
 #sideBox-2{
   border:2px solid #b8cbdc;
   border-radius: 8px;
@@ -247,6 +302,16 @@ td.weekday:hover,td.weekend:hover,td.today:hover
   line-height: 20px;
   color: #192a3a;
   background-color: #7fa7cb;  
+}
+
+#copyrightInfo{
+  clear:both;
+  position:relative;
+  top:-6px;
+  left:425px;
+  color:#858fa2;
+  font-size:12px;
+  font-family:arial;  
 }
 
 *{
